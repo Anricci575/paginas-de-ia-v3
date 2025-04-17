@@ -1,0 +1,268 @@
+/* Modo Claro */
+:root {
+    --background-color: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    --text-color: #f5f5f5;
+    --header-bg: rgba(255, 255, 255, 0.1);
+    --header-text: #f5f5f5;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --btn-bg: linear-gradient(45deg, #00d2ff, #3a7bd5);
+    --btn-text: #ffffff;
+    --btn-hover-bg: linear-gradient(45deg, #3a7bd5, #00d2ff);
+    --summary-bg: rgba(255, 255, 255, 0.1);
+    --summary-shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* Modo Oscuro */
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --header-bg: #1e1e1e;
+    --header-text: #ffffff;
+    --card-bg: #1e1e1e;
+    --card-shadow: rgba(0, 0, 0, 0.5);
+    --btn-bg: #bb86fc;
+    --btn-text: #ffffff;
+    --btn-hover-bg: #7b4dff;
+    --summary-bg: #1e1e1e;
+    --summary-shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Fondo Animado */
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Encabezado */
+header {
+    background: var(--header-bg);
+    padding: 20px 30px;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    box-shadow: 0 8px 15px var(--card-shadow);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: var(--header-text);
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: var(--header-text);
+}
+
+/* Botón de Modo Claro/Oscuro */
+.btn-toggle {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-toggle:hover {
+    background: var(--btn-hover-bg);
+    transform: scale(1.05);
+}
+
+/* Lista de IAs */
+.ias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.ai-item {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    width: 280px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 8px 15px var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    position: relative;
+}
+
+.ai-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+.ai-item h3 {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.ai-item p {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.ai-item .btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-item .btn:hover {
+    background: var(--btn-hover-bg);
+    transform: scale(1.1);
+}
+
+/* Modo Retro: Ajustes */
+body.retro-mode .ias {
+    gap: 40px; /* Mayor separación entre tarjetas */
+    padding: 40px 0; /* Espaciado adicional vertical */
+}
+
+/* Ocultar botón "Ver Más" en Modo Retro */
+body.retro-mode .ai-item .btn {
+    display: none;
+}
+
+/* Modo Retro: Hacer clickeable todo el contenedor */
+body.retro-mode .ai-item {
+    cursor: pointer;
+}
+
+body.retro-mode .ai-item:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(255, 255, 0, 0.5); /* Efecto de resaltado retro */
+}
+
+/* Asegurar que todo el contenedor sea un enlace funcional */
+body.retro-mode .ai-item a {
+    text-decoration: none; /* Quitar subrayado */
+    color: inherit; /* Heredar color del contenedor */
+    display: block; /* Bloquear el espacio completo */
+    height: 100%;
+    width: 100%;
+}
+
+/* Resumen de IAs */
+.summary {
+    background: var(--summary-bg);
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 50px;
+    box-shadow: 0 8px 20px var(--summary-shadow);
+}
+
+.summary h2 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.ai-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--summary-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px var(--summary-shadow);
+}
+
+.ai-summary-table th,
+.ai-summary-table td {
+    padding: 15px;
+    text-align: left;
+    color: var(--text-color);
+}
+
+.ai-summary-table th {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.ai-summary-table td {
+    font-size: 1rem;
+}
+
+.ai-summary-table tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.ai-summary-table tr:hover td {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+#retro-toggle {
+    position: fixed;
+    top: 20px; /* Separación desde arriba */
+    right: 20px; /* Separación desde la derecha */
+    z-index: 1000; /* Asegura que esté encima de todo */
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #ffcc00; /* Color retro llamativo */
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+#retro-toggle:hover {
+    transform: scale(1.1);
+}

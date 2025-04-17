@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Futuristas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" id="theme-style">
+</head>
+<body>
+    <!-- Fondo Animado -->
+    <div id="background">
+        <!-- El Canvas para el Modo Retro se generará dinámicamente -->
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">
+            <h1>IA Futuristas</h1>
+        </div>
+        <p>Explora las mejores IAs que están revolucionando el mundo</p>
+        <div class="btn-container">
+            <button id="theme-toggle" class="btn-toggle">Modo Oscuro</button>
+            <button id="retro-toggle" class="btn-toggle">Modo Retro</button>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <!-- Lista de IAs -->
+        <section id="aiList" class="ias"></section>
+
+        <!-- Resumen de IAs -->
+        <section id="summary" class="summary">
+            <h2>Resumen de IAs</h2>
+            <div id="summaryContent"></div>
+        </section>
+    </main>
+    <div id="fake-terminal" class="hidden">
+        <div class="terminal-header">Terminal - IA Futuristas</div>
+        <div class="terminal-body" id="terminal-output"></div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 IA Futuristas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="animation.js"></script>
+    <script src="theme-toggle.js"></script>
+    <script src="assets/js/retro-animation.js"></script>
+    <!--<script src="assets/js/retro-sound.js"></script>-->
+    
+    
+</body>
+</html>

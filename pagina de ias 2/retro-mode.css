@@ -1,0 +1,381 @@
+/* Modo Retro inspirado en sistemas operativos antiguos */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); /* Fuente CRT retro */
+
+body.retro-mode {
+    --background-color: #000000; /* Fondo negro */
+    --text-color: #ffff00; /* Texto amarillo */
+    --highlight-color: #ffffaa; /* Resaltado amarillo más claro */
+    --border-color: #ffaa00; /* Bordes amarillos */
+    --shadow-color: rgba(255, 170, 0, 0.5); /* Sombra amarilla */
+    font-family: 'VT323', monospace; /* Fuente tipo terminal */
+    background: var(--background-color);
+    color: var(--text-color);
+    overflow-y: auto;
+    height: auto;
+}
+
+/* Fondo animado para el Modo Retro */
+body.retro-mode #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: var(--background-color);
+    overflow: hidden;
+    pointer-events: none; /* No interfiere con el contenido */
+}
+
+/* Estilo para las partículas animadas */
+body.retro-mode .particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    animation: moveParticles 10s linear infinite;
+    opacity: 0.8;
+}
+
+/* Generar múltiples partículas de fondo */
+body.retro-mode #background .particle:nth-child(odd) {
+    width: 12px;
+    height: 12px;
+    background-color: var(--highlight-color);
+    animation-duration: 12s;
+}
+
+body.retro-mode #background .particle:nth-child(even) {
+    animation-duration: 8s;
+    background-color: var(--border-color);
+}
+
+/* Animación para mover las partículas */
+@keyframes moveParticles {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(50vh) translateX(-50vw);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(100vh) translateX(50vw);
+        opacity: 0;
+    }
+}
+
+/* Encabezado */
+body.retro-mode header {
+    border: 2px solid var(--border-color);
+    padding: 10px;
+    margin-bottom: 20px;
+    background: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    box-shadow: 0 0 10px var(--shadow-color); /* Brillo suave */
+}
+
+body.retro-mode header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px var(--border-color);
+    animation: flicker 2s infinite; /* Animación de parpadeo */
+}
+
+body.retro-mode header p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 5px 0 0;
+    text-shadow: 0 0 3px var(--border-color);
+}
+
+/* Animación de parpadeo */
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Botones generales */
+body.retro-mode .btn-container .btn-toggle {
+    background: var(--background-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    text-shadow: 0 0 3px var(--border-color);
+}
+
+body.retro-mode .btn-container .btn-toggle:hover {
+    background: var(--highlight-color);
+    color: var(--background-color);
+    box-shadow: 0 0 10px var(--border-color);
+}
+
+/* Lista de IAs */
+body.retro-mode .ias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px; /* Espaciado amplio entre tarjetas */
+    padding: 40px 0; /* Espaciado vertical adicional */
+}
+
+/* Estilo de las tarjetas */
+body.retro-mode .ias .ai-item {
+    background: var(--background-color);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    padding: 20px; /* Más espacio interno */
+    width: 320px; /* Ancho aumentado */
+    height: 160px; /* Altura aumentada */
+    color: var(--text-color);
+    font-size: 1rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    text-shadow: 0 0 3px var(--border-color);
+    cursor: pointer; /* Indica que es clickeable */
+}
+
+/* Hacer clickeable todo el contenedor */
+body.retro-mode .ias a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+body.retro-mode .ias .ai-item:hover {
+    background: var(--highlight-color);
+    color: var(--background-color);
+    box-shadow: 0 0 15px var(--shadow-color);
+}
+
+/* Resumen */
+body.retro-mode .summary {
+    background: var(--background-color);
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    color: var(--text-color);
+    font-size: 1rem;
+    box-shadow: 0 0 15px var(--shadow-color);
+    text-shadow: 0 0 3px var(--border-color);
+}
+
+body.retro-mode .summary h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px var(--border-color);
+}
+
+/* Tablas */
+body.retro-mode table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+body.retro-mode th, body.retro-mode td {
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    text-align: left;
+    color: var(--text-color);
+    text-shadow: 0 0 3px var(--border-color);
+}
+
+body.retro-mode th {
+    background: var(--border-color);
+    color: var(--background-color);
+}
+
+body.retro-mode td:hover {
+    background: var(--highlight-color);
+    color: var(--background-color);
+}
+
+/* Footer */
+body.retro-mode footer {
+    border: 2px solid var(--border-color);
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    box-shadow: 0 0 15px var(--shadow-color);
+}
+
+/* Interacción animada */
+body.retro-mode .interactive {
+    animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+    50% {
+        color: var(--highlight-color);
+    }
+}
+
+/* Barra de carga */
+body.retro-mode #loading-bar {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background: var(--background-color);
+    border: 2px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+body.retro-mode #loading-bar .progress {
+    width: 0;
+    height: 100%;
+    background: var(--highlight-color);
+    animation: loading 3s linear infinite;
+}
+
+@keyframes loading {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* 🎯 Aquí agregamos el canvas retro 🎯 */
+body.retro-mode #background #retroCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Detrás de las partículas */
+    pointer-events: none;
+    mix-blend-mode: screen; /* Da un efecto de mezcla de luz */
+    opacity: 0.9; /* Un poquito translúcido */
+}
+body.retro-mode #retro-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    background: linear-gradient(90deg, #00ffea, #00ff00);
+    color: #000;
+    border: 2px solid #00ff00;
+    border-radius: 0px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ffea;
+    animation: flicker 2s infinite;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: fixed;
+}
+
+/* Parpadeo tipo CRT */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.6;
+    }
+}
+
+/* Hover con vibración/glitch */
+body.retro-mode #retro-toggle:hover {
+    animation: glitchy 0.3s infinite;
+    box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    transform: scale(1.05);
+}
+
+/* Animación de vibración glitch */
+@keyframes glitchy {
+    0% {
+        transform: translate(0) scale(1.05);
+    }
+    20% {
+        transform: translate(-2px, 2px) scale(1.05);
+    }
+    40% {
+        transform: translate(2px, -2px) scale(1.05);
+    }
+    60% {
+        transform: translate(-2px, 2px) scale(1.05);
+    }
+    80% {
+        transform: translate(2px, -2px) scale(1.05);
+    }
+    100% {
+        transform: translate(0) scale(1.05);
+    }
+}
+#fake-terminal {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+    width: 500px;
+    height: 300px;
+    background: #000;
+    color: #0f0;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    border: 2px solid #ffaa00;
+    z-index: 1000;
+    box-shadow: 0 0 20px #ffaa00;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.terminal-header {
+    background: #111;
+    color: #ffaa00;
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: 1px solid #ffaa00;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+.fake-terminal {
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    background: black;
+    color: #00ff00;
+    font-family: monospace;
+    padding: 20px;
+    border: 2px solid #00ff00;
+    z-index: 9999;
+}
+.terminal-line {
+    margin: 5px 0;
+}
+.blink {
+    animation: blink 1s step-start infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
